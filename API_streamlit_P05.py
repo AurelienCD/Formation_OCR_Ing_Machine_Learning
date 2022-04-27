@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 import pandas as pad 
 import numpy as np
 
@@ -28,9 +29,9 @@ import en_core_web_sm
 def main():
     MLFLOW_URI = 'http://127.0.0.1:5000/invocations'
 
-    streamlit.title('Prédiction de tags pour question stack overflow')
+    st.title('Prédiction de tags pour question stack overflow')
 
-    post = streamlit.text_input('Question stack overflow', "aggressive javascript cach've run problem make changes javascript files referenced html file browser")
+    post = st.text_input('Question stack overflow', "aggressive javascript cach've run problem make changes javascript files referenced html file browser")
 
     data_words = post
 
@@ -143,7 +144,7 @@ def main():
     model_svm = load('SVM_model.joblib')
     binarizer = load('binarizer.joblib')
 
-    predict_btn = streamlit.button('Prédire')
+    predict_btn = st.button('Prédire')
     if predict_btn:
         #data = [[post]]
         #data = post.toJSON()
@@ -151,17 +152,17 @@ def main():
 
 
         ## Unsupervised prediction ##
-        streamlit.write('Pour le modèle non-supervisé (LDA) : \n')
-        streamlit.write('Les tags prédis sont : ' + str(unsupervised_model_prediction_tags(post)))
+        st.write('Pour le modèle non-supervisé (LDA) : \n')
+        st.write('Les tags prédis sont : ' + str(unsupervised_model_prediction_tags(post)))
 
         ## Supervised prediction #
         pred = model_svm.predict(post_sup)
         #pred = request_prediction(MLFLOW_URI, post)[0] * 100000
         tags_supervised = binarizer.inverse_transform(pred)
         #st.write('Les tags prédis sont : {:.2f}'.format(tags_supervised))
-        streamlit.write('\n\nPour le modèle supervisé (SVM) : \n')
-        streamlit.write("Les tags prédis sont : ")
-        streamlit.write(str(tags_supervised))
+        st.write('\n\nPour le modèle supervisé (SVM) : \n')
+        st.write("Les tags prédis sont : ")
+        st.write(str(tags_supervised))
 
 
 #####  get the error :
