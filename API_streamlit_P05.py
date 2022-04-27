@@ -31,7 +31,7 @@ def main():
 
     st.title('Prédiction de tags pour question stack overflow')
 
-    post = st.text_input('Question stack overflow', "aggressive javascript cach've run problem make changes javascript files referenced html file browser")
+    post = st.text_input('Question stack overflow', "Aggressive JavaScript caching, I've run into a problem where I make changes to a few JavaScript files that are referenced in an HTML file, but the browser doesn't see the changes")
 
     data_words = post
 
