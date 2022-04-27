@@ -4,7 +4,6 @@ import requests
 import pandas as pad 
 import numpy as np
 
-## nettoyage
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -19,8 +18,6 @@ from gensim.matutils import corpus2csc
 from gensim.utils import simple_preprocess
 
 from joblib import dump, load
-
-nltk.download('stopwords')
 
 import en_core_web_sm
 import json
