@@ -5,13 +5,11 @@
 # Version : v1.0 / 02 juin 2022
 
 
-"""
+
 import tensorflow
 from utils.data_utils import *
 from utils.models import *
 from tensorflow import keras
-"""
-
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
@@ -37,9 +35,8 @@ def CaniNetModel():
 
 
 	## Prédiction
-	#cnn_transfert_learning_VGG16 = load("cnn_transfert_learning_VGG16.joblib")
-	encoded_race_predicted = 5
-	#encoded_race_predicted = cnn_transfert_learning_VGG16.predict(resized_image)
+	cnn_transfert_learning_VGG16 = load("cnn_transfert_learning_VGG16.joblib")
+	encoded_race_predicted = cnn_transfert_learning_VGG16.predict(resized_image)
 	dict_race = {0:"Afghan_hound", 1:"Blenheim_spaniel", 2:"Japanese_spaniel", 3:"Maltese_dog", 4:"Pekinese", 5:"Rhodesian_ridgeback", 6:"Tzu", 7:"basset", 8:"papillon", 9:"toy_terrier"}
 	race_predicted = dict_race[encoded_race_predicted]
 
@@ -71,12 +68,6 @@ class CaniNet_GUI:
 		label_window.pack()
 		label_window2.pack()
 
-		#logo = PhotoImage(file="xxxpathxxx")
-		#img = Label(self.window, image=logo)
-		#img.image = logo
-		#img.pack()
-
-
 		style = ttk.Style()
 		style.configure('TNotebook.Tab', font=('Calibri','13','bold'))
 
@@ -97,8 +88,6 @@ class CaniNet_GUI:
 
 
 		### Frame classification ###
-
-		# Result
 		label_start_algo = Button(self.frame3, text="Lancer l'algorithme de classification", command= CaniNetModel, font=("Courrier", 15),background="chartreuse3").place(x=140, y=60)
 
 		label_ou_txt3 = Label(self.frame3, text="                                                                                               ")
@@ -120,11 +109,6 @@ class CaniNet_GUI:
 		label_A_propos6.grid(pady=2, sticky = N, row=7, column=1)
 		label_A_proposxx = Label(self.frame11, text="           ", font=("Courrier", 15),fg='black')
 		label_A_proposxx.grid(pady=1, sticky = N, row=8, column=1)
-
-		#logo2 = PhotoImage(file="xxxpathxxx")
-		#img2 = Label(self.frame11, image=logo2)
-		#img2.image = logo2
-		#img2.place(x=850, y=22)
 
 
 # afficher
